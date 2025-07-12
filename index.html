@@ -6,6 +6,9 @@
     <title>Willow Works | Human-AI Web Development</title>
     <meta name="description" content="Willow Works creates bespoke, high-performance websites by combining human strategy with AI-powered development for exceptional results.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -24,8 +27,54 @@
             </ul>
         </nav>
     </header>
+
     <main>
-        </main>
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <h1 data-cms-id="hero_title">Where Human Strategy Meets AI Precision</h1>
+                <p data-cms-id="hero_subtitle">We build intelligent, high-performance websites that drive growth and deliver results.</p>
+                <a href="#services-preview" class="cta-button">Explore Our Services</a>
+            </div>
+        </section>
+
+        <section id="services-preview" class="content-section">
+            <div class="section-container">
+                <h2 data-cms-id="services_preview_title">Our Core Services</h2>
+                <div class="cards-container">
+                    <div class="info-card">
+                        <div class="icon-wrapper">
+                            <svg class="custom-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10V22"/><path d="M10 12H5.17a2 2 0 0 0-1.77 2.89l1.6 2.89A2 2 0 0 0 7 19h10a2 2 0 0 0 1.95-1.57l1.6-6A2 2 0 0 0 18.83 9H14"/><path d="M10 12V5a2 2 0 0 1 2-2v0a2 2 0 0 1 2 2v7"/></svg>
+                        </div>
+                        <h3 data-cms-id="service_1_title">Web Development</h3>
+                        <p data-cms-id="service_1_desc">High-performance websites built on a modern, secure tech stack.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="icon-wrapper">
+                           <svg class="custom-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                        </div>
+                        <h3 data-cms-id="service_2_title">App Development</h3>
+                        <p data-cms-id="service_2_desc">Intuitive and engaging mobile apps for both iOS and Android platforms.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="icon-wrapper">
+                             <svg class="custom-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h3 data-cms-id="service_3_title">AI Consulting</h3>
+                        <p data-cms-id="service_3_desc">Data-driven strategies to increase your visibility and drive organic traffic.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-preview" class="content-section alt-bg">
+            <div class="section-container" style="text-align: center;">
+                 <h2 data-cms-id="about_preview_title">A Different Kind of Agency</h2>
+                 <p data-cms-id="about_preview_text" style="max-width: 600px; margin: 0 auto 30px auto;">We are founded on the "cross-species" philosophy: the perfect synergy of human strategic oversight and the powerful precision of artificial intelligence. This allows us to deliver superior quality with unmatched efficiency.</p>
+                 <a href="about.html" class="cta-button">Learn Our Story</a>
+            </div>
+        </section>
+
+    </main>
     <footer>
         <div class="footer-container">
             <div class="footer-nav">
@@ -37,6 +86,7 @@
             <p>&copy; 2025 Willow Works. All Rights Reserved.</p>
         </div>
     </footer>
+    
     <script src="script.js"></script>
 </body>
 </html>

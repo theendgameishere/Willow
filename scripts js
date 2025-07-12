@@ -1,43 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    //================================================
-    // BLOCK 1: SITE INTERACTIVITY
-    //================================================
+    // Scroll-triggered animations
+    const animatedElements = document.querySelectorAll('.scroll-animate');
 
-    /**
-     * Sticky Header
-     * Adds a 'scrolled' class to the header when the user scrolls past a certain point.
-     * The styling for .scrolled is handled in styles.css.
-     */
-    const header = document.querySelector('.site-header');
-    if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    }
-
-    /**
-     * Scroll Animations
-     * Uses the modern IntersectionObserver API to add a 'visible' class to elements
-     * as they enter the viewport. This is more performant than listening to every scroll event.
-     * Note: For this to work, you would add the class 'scroll-animate' to the HTML elements
-     * you wish to animate (e.g., <section id="services-preview" class="services-section scroll-animate">).
-     */
-    const animatedElements = document.querySelectorAll('.scroll-animate'); // A class you would add to HTML elements
     if (animatedElements.length > 0) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Optional: stop observing once it's visible
+                    // Optional: stop observing once animated
+                    // observer.unobserve(entry.target); 
                 }
             });
         }, {
-            threshold: 0.1 // Triggers when 10% of the element is visible
+            threshold: 0.1 // Trigger when 10% of the element is visible
         });
 
         animatedElements.forEach(element => {
@@ -45,62 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Mobile Menu Toggle ---
+    const hamburgerButton = document.getElementById('hamburger-menu');
+    const navLinks = document.querySelector('nav ul');
 
-    //================================================
-    // BLOCK 2: HEADLESS CMS DATA FETCHING (EXAMPLE)
-    //================================================
-
-    /**
-     * Fetches content from a Headless CMS (like Sanity.io) and renders it on the page.
-     * This function is asynchronous, allowing it to fetch data without freezing the page.
-     */
-    async function fetchAndRenderContent() {
-        // --- Replace these with your actual Sanity.io project details ---
-        const projectId = 'your-project-id';
-        const dataset = 'production';
-        // --- Define your query using GROQ (Sanity's query language) ---
-        // This query fetches a single document of type 'homepage'
-        const query = encodeURIComponent('*[_type == "homepage"][0]');
-        const endpoint = `https://${projectId}.api.sanity.io/v2021-10-21/data/query/${dataset}?query=${query}`;
-
-        try {
-            const response = await fetch(endpoint);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const { result } = await response.json();
-
-            if (result) {
-                console.log('CMS data fetched successfully:', result);
-
-                // --- Populate the DOM with the fetched data ---
-                // It looks for elements with a 'data-cms-id' attribute and fills them.
-                
-                // Hero Section
-                document.querySelector('[data-cms-id="hero_title"]').textContent = result.hero_title || 'Default Title';
-                document.querySelector('[data-cms-id="hero_subtitle"]').textContent = result.hero_subtitle || 'Default subtitle.';
-                document.querySelector('[data-cms-id="hero_cta_button_text"]').textContent = result.hero_cta_button_text || 'Learn More';
-                
-                // Services Section Title
-                document.querySelector('[data-cms-id="services_title"]').textContent = result.services_title || 'Our Services';
-
-                // And so on for every other piece of content...
-                // For an image:
-                // if(result.about_image_url) {
-                //   document.querySelector('[data-cms-id="about_image"]').src = result.about_image_url;
-                // }
-
-            } else {
-                 console.log('No data returned from CMS for this query.');
-            }
-
-        } catch (error) {
-            console.error("Failed to fetch content from CMS:", error);
-            // You could have fallback logic here if the CMS fails to load
-        }
-    }
-
-    // --- To activate the CMS fetching, uncomment the line below ---
-    // fetchAndRenderContent();
+    hamburgerButton.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
 
 });

@@ -1,32 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Scroll-triggered animations
+    // --- Part 1: Scroll-triggered animations ---
     const animatedElements = document.querySelectorAll('.scroll-animate');
 
+    // This check ensures the animation code only runs if elements to animate exist on the page.
     if (animatedElements.length > 0) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Optional: stop observing once animated
-                    // observer.unobserve(entry.target); 
                 }
             });
-        }, {
-            threshold: 0.1 // Trigger when 10% of the element is visible
-        });
+        }, { threshold: 0.1 });
 
         animatedElements.forEach(element => {
             observer.observe(element);
         });
     }
 
-    // --- Mobile Menu Toggle ---
+    // --- Part 2: Mobile Menu Toggle ---
     const hamburgerButton = document.getElementById('hamburger-menu');
     const navLinks = document.querySelector('nav ul');
 
-    hamburgerButton.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-    });
+    // This check is the crucial fix. It ensures we only try to make the button clickable if
+    // the browser has successfully found BOTH the button and the navigation links in the HTML.
+    // This prevents a script crash from a simple typo.
+    if (hamburgerButton && navLinks) {
+        hamburgerButton.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    }
 
 });

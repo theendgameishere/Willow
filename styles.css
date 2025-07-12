@@ -3,7 +3,7 @@
     --bg-color: #111111;
     --card-color: #1a1a1a;
     --text-color: #f0f0f0;
-    --primary-color: #8a2be2; /* Changed to a purple for a more modern feel */
+    --primary-color: #8a2be2;
     --primary-hover-color: #6a1eae;
     --border-color: #2a2a2a;
 }
@@ -19,7 +19,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif; /* Assuming Inter font from previous steps */
+    font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -119,7 +119,7 @@ h2 {
     margin-bottom: 40px;
 }
 
-/* --- About Page: Founder Card Fix --- */
+/* --- About Page: Founder Card --- */
 .founders-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -132,7 +132,7 @@ h2 {
 
 .founder-card img {
     width: 100%;
-    max-width: 180px; /* Reduced max-width for desktop */
+    max-width: 180px;
     height: 180px;
     border-radius: 50%;
     object-fit: cover;
@@ -146,7 +146,7 @@ h2 {
 }
 
 
-/* --- Contact Page Fixes --- */
+/* --- Contact Page --- */
 .contact-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -211,12 +211,13 @@ h2 {
 }
 
 
-/* --- MOBILE RESPONSIVE FIXES --- */
+/* --- MOBILE RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.8rem; }
+    /* --- ADJUSTED FONT SIZES FOR MOBILE --- */
+    .page-hero h1 { font-size: 2.0rem; } /* Reduced from 2.8rem */
+    h2 { font-size: 1.6rem; } /* Reduced from 2.2rem */
 
-    /* --- 1. Fix the Navigation Menu --- */
+    /* --- Navigation Menu --- */
     nav ul {
         display: none;
         position: absolute;
@@ -242,13 +243,12 @@ h2 {
     }
 
 
-    /* --- 2. Fix the Oversized Images --- */
+    /* --- About Us Page Images --- */
     .founders-grid {
         grid-template-columns: 1fr; /* Stack founder cards on mobile */
     }
 
     .founder-card img {
-        /* This is the key fix for the image size */
         max-width: 150px;
         height: 150px;
         margin-left: auto;
@@ -256,7 +256,7 @@ h2 {
     }
 
 
-    /* --- Contact Page Mobile Layout --- */
+    /* --- Contact Page Layout --- */
     .contact-layout {
         grid-template-columns: 1fr;
     }
